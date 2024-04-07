@@ -13,11 +13,11 @@
 #include "structData.h"
 #include "mainMenu.h"
 #include "boardEditFunctions.h"
-/* to run on eclipse comment these out, leave in to run on vs code*/
+/* to run on eclipse comment these out, leave in to run on vs code
 #include "listEditFunctions.c"
 #include "mainMenu.c"
 #include "boardEditFunctions.c"
-//*/
+*/
 
 int main()
 
