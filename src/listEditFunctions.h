@@ -8,7 +8,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include "structData.h"
-#include "loadFromFile.h"
+#include "mainMenu.h"
 
 
 #define MAX_SIZE 80
@@ -20,9 +20,9 @@
 void editList(ListPtr *currentPtr);
 
 unsigned int editListMenu();
-void editItem();
-void addItem();
-void deleteItem();
+void editItem(ListPtr *currentPtr);
+void addItem(ListPtr *currentPtr);
+void deleteItem(ListPtr *currentPtr);
 void returnToMenu();
 //
 

@@ -13,7 +13,12 @@
 #ifndef LOADFROMFILE_H_
 #define LOADFROMFILE_H_
 
-void load(char fileName[MAX_SIZE]);
+unsigned int menuOptions();
+void printBoard(List *currentPtr);
+void displayBoard(char fileName[80], ListPtr *currentPtr);
+void load(char fileName[MAX_SIZE], ListPtr *currentPtr);
 
+void save();
+void quit();
 
 #endif /* LOADFROMFILE_H_ */
