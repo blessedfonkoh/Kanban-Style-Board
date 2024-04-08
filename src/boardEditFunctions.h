@@ -2,14 +2,16 @@
  * boardEditFunctions.h
  *
  *  Created on: 5 Apr 2024
- *      Author: bless
+ *
  */
 
 #ifndef BOARDEDITFUNCTIONS_H_
 #define BOARDEDITFUNCTIONS_H_
 
-void editBoard();
-
-
+unsigned int editBoardMenu();
+void editBoard(ListPtr *currentPtr);
+void editListName(ListPtr *currentPtr);
+void addList(ListPtr *currentPtr);
+void deleteList(ListPtr *currentPtr);
 
 #endif /* BOARDEDITFUNCTIONS_H_ */

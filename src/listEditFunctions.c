@@ -44,7 +44,6 @@ unsigned int editListMenu()
 void editList(ListPtr *currentPtr) //   TO DO
 {
 	unsigned int userChoice;
-	// bool found = false;
 	char name[MAX_SIZE];
 	void (*menu[4])() = {editItem, addItem, deleteItem, returnToMenu};
 
@@ -92,7 +91,6 @@ void editItem(ListPtr *currentPtr) // done
 	{
 		if (strcmp(itemName, currentItem->itemName) == 0)
 		{
-
 			itemFound = true; // Set the boolean to true when the item is found
 			break;			  // Exit the loop once the item is updated
 		}
@@ -147,7 +145,7 @@ void addItem(ListPtr *currentPtr)
 		Item *previousItem = NULL;
 		Item *currentItem = (*currentPtr)->firstItem;
 
-		// loop to find the end locatiof the list
+		// loop to find the end location of the list
 		while (currentItem != NULL)
 		{
 			previousItem = currentItem;
@@ -160,6 +158,7 @@ void addItem(ListPtr *currentPtr)
 	else
 	{
 		printf("No memory available.\n");
+		fflush(stdout);
 	}
 }
 void deleteItem(ListPtr *currentPtr) // done
