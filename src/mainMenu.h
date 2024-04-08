@@ -18,7 +18,7 @@ void printBoard(List *currentPtr);
 void displayBoard(char fileName[80], ListPtr *currentPtr);
 void load(char fileName[MAX_SIZE], ListPtr *currentPtr);
 
-void save(ListPtr currentPtr);
+void save(ListPtr currentPtr,FILE *fPtr);
 void quit();
 
 #endif /* LOADFROMFILE_H_ */

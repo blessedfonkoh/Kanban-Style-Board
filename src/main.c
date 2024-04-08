@@ -13,11 +13,11 @@
 #include "structData.h"
 #include "mainMenu.h"
 #include "boardEditFunctions.h"
-/* to run on eclipse comment these out, leave in to run on vs code
+/* to run on eclipse comment these out, leave in to run on vs code*/
 #include "listEditFunctions.c"
 #include "mainMenu.c"
 #include "boardEditFunctions.c"
-*/
+//*/
 
 int main()
 
@@ -104,7 +104,31 @@ int main()
 			break;
 		case 5: // save to file
 			updated = 0;
-			(*menu[choice - 1])(currentPtr);
+			FILE *fPtr;
+			char newFileName[MAX_SIZE];
+
+			printf("Enter filename:\n");
+			fflush(stdout);
+
+			fgets(newFileName, MAX_SIZE, stdin);
+
+			// remove newline character
+			size_t length = strlen(newFileName);
+			if (newFileName[length - 1] == '\n')
+			{
+				newFileName[length - 1] = '\0';
+			}
+
+			if ((fPtr = fopen(newFileName, "w")) == NULL)
+			{
+				printf("ERROR: could not open file %s\n", newFileName);
+				fflush(stdout);
+				break;
+			}
+			else
+			{
+				(*menu[choice - 1])(currentPtr, fPtr);
+			}
 			break;
 		case 6:
 			(*menu[choice - 1])();

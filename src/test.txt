@@ -1,12 +1,13 @@
-Ghof:
-Glasses
-
-Ble:
-Hoodie
+Tara:
+Phone
 
 Jen:
 Headphone
 Shoes
 
-Tehee:
-Phone
+Ble:
+Hoodie
+
+Ghof:
+Glasses
+

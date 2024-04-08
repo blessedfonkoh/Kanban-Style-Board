@@ -48,33 +48,30 @@ unsigned int menuOptions() // done
 void printBoard(List *ptr) // Function to print the list of lists
 
 {
-	// Check if the list is empty
+	// Check if the list is empty for base case
 	if (ptr == NULL)
 	{
-		puts("List is empty.\n");
+		return;
 	}
 	else
 	{
-		while (ptr != NULL)
+		// recursively print the rest of the list first
+		printBoard(ptr->nextList);
+
+		printf("%s \n", ptr->listName); // Print the name of the current list
+		fflush(stdout);
+
+		// Print the names of the items within the current list
+		Item *currentItem = ptr->firstItem;
+		while (currentItem != NULL)
 		{
-			printf("%s \n", ptr->listName); // Print the name of the current list
+			printf("\t%s \n", currentItem->itemName);
 			fflush(stdout);
 
-			// Print the names of the items within the current list
-			Item *currentItem = ptr->firstItem;
-			while (currentItem != NULL)
-			{
-				printf("\t%s \n", currentItem->itemName);
-				fflush(stdout);
-
-				currentItem = currentItem->nextItem;
-			}
-
-			ptr = ptr->nextList; // Move to the next list
+			currentItem = currentItem->nextItem;
 		}
 
-		printf("\n");
-		fflush(stdout);
+		ptr = ptr->nextList; // Move to the next list aka the previous one
 	}
 }
 
@@ -243,45 +240,31 @@ void load(char fileName[MAX_SIZE], ListPtr *currentPtr) // done
 	fflush(stdout);
 }
 
-void save(ListPtr currentPtr)
+void save(ListPtr currentPtr, FILE *fPtr)
 {
-	FILE *fPtr;
-	char fileName[MAX_SIZE];
-
-	printf("Enter filename:\n");
-	fflush(stdout);
-
-	fgets(fileName, MAX_SIZE, stdin);
-
-	// remove newline character
-	size_t length = strlen(fileName);
-	if (fileName[length - 1] == '\n')
+	// Check if the list is empty for base case
+	if (currentPtr == NULL)
 	{
-		fileName[length - 1] = '\0';
+		printf("List is Empty\n");
 	}
-
-	if ((fPtr = fopen(fileName, "w")) == NULL)
+	else
 	{
-		printf("ERROR: could not open file %s\n", fileName);
-		fflush(stdout);
-		return;
-	}
-	// iterate through the board and write its contents to the file
-	while (currentPtr != NULL)
-	{
-		fprintf(fPtr, "%s\n", currentPtr->listName); // write the list name to the file
-
-		// iterate through the items within the current list and write their names to the file too
-		Item *currentItem = currentPtr->firstItem;
-		while (currentItem != NULL)
+		// iterate through the board and write its contents to the file
+		while (currentPtr != NULL)
 		{
-			fprintf(fPtr, "%s\n", currentItem->itemName); // write the item name to the file
-			currentItem = currentItem->nextItem;		  // move to the next item within that samne list
+			fprintf(fPtr, "%s\n", currentPtr->listName); // write the list name to the file
+
+			// iterate through the items within the current list and write their names to the file too
+			Item *currentItem = currentPtr->firstItem;
+			while (currentItem != NULL)
+			{
+				fprintf(fPtr, "%s\n", currentItem->itemName); // write the item name to the file
+				currentItem = currentItem->nextItem;		  // move to the next item within that samne list
+			}
+
+			currentPtr = currentPtr->nextList; // move to the next list
 		}
-
-		currentPtr = currentPtr->nextList; // move to the next list
 	}
-
 	fclose(fPtr);
 }
 
