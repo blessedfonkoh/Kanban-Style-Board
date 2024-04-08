@@ -13,11 +13,11 @@
 #include "structData.h"
 #include "mainMenu.h"
 #include "boardEditFunctions.h"
-/* to run on eclipse comment these out, leave in to run on vs code*/
+/* to run on eclipse comment these out, leave in to run on vs code
 #include "listEditFunctions.c"
 #include "mainMenu.c"
 #include "boardEditFunctions.c"
-//*/
+*/
 
 int main()
 
@@ -102,7 +102,10 @@ int main()
 			updated++;
 			(*menu[choice - 1])(&currentPtr);
 			break;
-		case 5: //save to file
+		case 5: // save to file
+			updated = 0;
+			(*menu[choice - 1])(currentPtr);
+			break;
 		case 6:
 			(*menu[choice - 1])();
 			break;

@@ -216,13 +216,16 @@ void deleteList(ListPtr *currentPtr)
         return;
     }
 
-    if (prevList != NULL){
+    if (prevList != NULL)
+    {
         prevList->nextList = currentList->nextList;
-    }else{
-    *currentPtr = currentList->nextList; // updating the currentPtr to skip the list to be deleted
-
+    }
+    else
+    {
+        *currentPtr = currentList->nextList; // updating the currentPtr to skip the list to be deleted
     }
 
     free(currentList); // freeing memory for the deleted list
+
     return;
 }

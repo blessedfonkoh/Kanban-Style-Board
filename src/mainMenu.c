@@ -243,9 +243,48 @@ void load(char fileName[MAX_SIZE], ListPtr *currentPtr) // done
 	fflush(stdout);
 }
 
-void save() // TO DO POURIA
+void save(ListPtr currentPtr)
 {
+	FILE *fPtr;
+	char fileName[MAX_SIZE];
+
+	printf("Enter filename:\n");
+	fflush(stdout);
+
+	fgets(fileName, MAX_SIZE, stdin);
+
+	// remove newline character
+	size_t length = strlen(fileName);
+	if (fileName[length - 1] == '\n')
+	{
+		fileName[length - 1] = '\0';
+	}
+
+	if ((fPtr = fopen(fileName, "w")) == NULL)
+	{
+		printf("ERROR: could not open file %s\n", fileName);
+		fflush(stdout);
+		return;
+	}
+	// iterate through the board and write its contents to the file
+	while (currentPtr != NULL)
+	{
+		fprintf(fPtr, "%s\n", currentPtr->listName); // write the list name to the file
+
+		// iterate through the items within the current list and write their names to the file too
+		Item *currentItem = currentPtr->firstItem;
+		while (currentItem != NULL)
+		{
+			fprintf(fPtr, "%s\n", currentItem->itemName); // write the item name to the file
+			currentItem = currentItem->nextItem;		  // move to the next item within that samne list
+		}
+
+		currentPtr = currentPtr->nextList; // move to the next list
+	}
+
+	fclose(fPtr);
 }
+
 void quit() // DONE
 {
 	printf("Quitting...\n");
