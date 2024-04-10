@@ -46,7 +46,6 @@ void editBoard(ListPtr *currentPtr)
     unsigned int choice;
     char name[MAX_SIZE];
     bool found = false; // boolean for finding the list
-    void (*menu[4])() = {editListName, addList, deleteList, returnToMenu};
     if (*currentPtr == NULL)
     {
         printf("No list loaded. Please load a list first.\n");
@@ -102,15 +101,17 @@ void editBoard(ListPtr *currentPtr)
             }
             else
             {
-                (*menu[choice - 1])(&tempPtr);
+                editListName(&tempPtr);
             }
             break;
         case 2:
+            addList(&tempPtr);
+            break;
         case 3:
-            (*menu[choice - 1])(currentPtr);
+            deleteList(currentPtr);
             break;
         case 4:
-            (*menu[choice - 1])();
+            returnToMenu(currentPtr);
             break;
         default:
             break;
