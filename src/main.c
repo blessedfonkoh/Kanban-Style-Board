@@ -22,13 +22,13 @@
 int main()
 
 {
+	setbuf(stdout, NULL);				//flush output buffer
 	ListPtr currentPtr = NULL;
 	List *currentItem = NULL;
 	int updated = 0; // tracker for uplode board or new board
 	unsigned int choice;
 	char fileName[MAX_SIZE] = "sampleBoard.txt";
 
-	void (*menu[6])() = {displayBoard, load, editList, editBoard, save, quit};
 	do
 	{
 
@@ -43,11 +43,11 @@ int main()
 			}
 			else
 			{
-				(*menu[choice - 1])(fileName, &currentPtr);
+				displayBoard(fileName, &currentPtr);
 			}
 			break;
 		case 2: // load() board from file
-			(*menu[choice - 1])(fileName, &currentPtr);
+			load(fileName, &currentPtr);
 			break;
 		case 3: // editList() item names
 
@@ -94,13 +94,13 @@ int main()
 				}
 				else
 				{
-					(*menu[choice - 1])(tempPtr);
+					editList(tempPtr);
 				}
 			}
 			break;
 		case 4: // editBoard() List names
 			updated++;
-			(*menu[choice - 1])(&currentPtr);
+			editBoard(&currentPtr);
 			break;
 		case 5: // save to file
 			updated = 0;
@@ -127,11 +127,11 @@ int main()
 			}
 			else
 			{
-				(*menu[choice - 1])(currentPtr, fPtr);
+				save(currentPtr, fPtr);
 			}
 			break;
 		case 6:
-			(*menu[choice - 1])();
+			quit();
 			break;
 		default:
 			break;
