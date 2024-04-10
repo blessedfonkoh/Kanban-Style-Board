@@ -45,7 +45,6 @@ void editList(ListPtr *currentPtr) //   TO DO
 {
 	unsigned int userChoice;
 	char name[MAX_SIZE];
-	void (*menu[4])() = {editItem, addItem, deleteItem, returnToMenu};
 
 	do
 	{
@@ -54,12 +53,16 @@ void editList(ListPtr *currentPtr) //   TO DO
 		switch (userChoice)
 		{
 		case 1:									  // edit item in list
+			editItem(&currentPtr);
+			break;
 		case 2:									  // add item to list
+			addItem(&currentPtr);
+			break;		
 		case 3:									  // delete item from list
-			(*menu[userChoice - 1])(&currentPtr); // Pass a pointer to the list
+			deleteItem(&currentPtr); // Pass a pointer to the list
 			break;
 		case 4: // return to main menu
-			(*menu[userChoice - 1])();
+			returnToMenu();
 			break;
 		default:
 			break;
