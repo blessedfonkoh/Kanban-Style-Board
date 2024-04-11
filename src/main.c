@@ -22,10 +22,10 @@
 int main()
 
 {
-	setbuf(stdout, NULL);				//flush output buffer
+	setbuf(stdout, NULL); // flush output buffer
 	ListPtr currentPtr = NULL;
 	List *currentItem = NULL;
-	int updated = 0; // tracker for uplode board or new board
+	int updated = 0; // tracker for upload board or new board
 	unsigned int choice;
 	char fileName[MAX_SIZE] = "sampleBoard.txt";
 
@@ -48,9 +48,9 @@ int main()
 			break;
 		case 2: // load() board from file
 			load(fileName, &currentPtr);
+			updated++;
 			break;
 		case 3: // editList() item names
-
 			updated++;
 			if (currentPtr == NULL)
 			{
@@ -94,7 +94,7 @@ int main()
 				}
 				else
 				{
-					editList(tempPtr);
+					editList(&tempPtr);
 				}
 			}
 			break;
@@ -128,6 +128,7 @@ int main()
 			else
 			{
 				save(currentPtr, fPtr);
+				fclose(fPtr);
 			}
 			break;
 		case 6:

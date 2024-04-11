@@ -243,44 +243,42 @@ void load(char fileName[MAX_SIZE], ListPtr *currentPtr) // done
 void save(ListPtr currentPtr, FILE *fPtr)
 {
 	// Check if the list is empty for base case
+	// Check if the list is empty for base case
 	if (currentPtr == NULL)
 	{
-		printf("List is Empty\n");
+		return;
 	}
 	else
 	{
-		// iterate through the board and write its contents to the file
-		while (currentPtr != NULL)
+		// recursively print the rest of the list first
+		save(currentPtr->nextList, fPtr);
+
+		// write the list name to the file
+		fprintf(fPtr, "%s\n", currentPtr->listName); // write the list name to the file
+
+		// iterate through the items within the current list and write their names to the file too
+		Item *currentItem = currentPtr->firstItem;
+		while (currentItem != NULL)
 		{
-			fprintf(fPtr, "%s\n", currentPtr->listName); // write the list name to the file
-
-			// iterate through the items within the current list and write their names to the file too
-			Item *currentItem = currentPtr->firstItem;
-			while (currentItem != NULL)
-			{
-				fprintf(fPtr, "%s\n", currentItem->itemName); // write the item name to the file
-				currentItem = currentItem->nextItem;		  // move to the next item within that samne list
-			}
-
-			currentPtr = currentPtr->nextList; // move to the next list
+			fprintf(fPtr, "%s\n", currentItem->itemName); // write the item name to the file
+			currentItem = currentItem->nextItem;		  // move to the next item within that same list
 		}
 	}
-	fclose(fPtr);
 }
 
 void quit() // DONE
 {
 	printf("  /$$$$$$            /$$   /$$     /$$     /$$                                \n");
 	printf(" /$$__  $$          |__/  | $$    | $$    |__/                                \n");
-	printf("| $$  \ $$ /$$   /$$ /$$ /$$$$$$ /$$$$$$   /$$ /$$$$$$$   /$$$$$$             \n");
+	printf("| $$  \\ $$ /$$   /$$ /$$ /$$$$$$ /$$$$$$   /$$ /$$$$$$$   /$$$$$$             \n");
 	printf("| $$  | $$| $$  | $$| $$|_  $$_/|_  $$_/  | $$| $$__  $$ /$$__  $$            \n");
-	printf("| $$  | $$| $$  | $$| $$  | $$    | $$    | $$| $$  \ $$| $$  \ $$            \n");
+	printf("| $$  | $$| $$  | $$| $$  | $$    | $$    | $$| $$  \\ $$| $$  \\ $$            \n");
 	printf("| $$/$$ $$| $$  | $$| $$  | $$ /$$| $$ /$$| $$| $$  | $$| $$  | $$            \n");
 	printf("|  $$$$$$/|  $$$$$$/| $$  |  $$$$/|  $$$$/| $$| $$  | $$|  $$$$$$$ /$$ /$$ /$$\n");
-	printf(" \____ $$$ \______/ |__/   \___/   \___/  |__/|__/  |__/ \____  $$|__/|__/|__/\n");
-	printf("      \__/                                               /$$  \ $$            \n");
+	printf(" \\____ $$$ \\______/ |__/   \\___/   \\___/  |__/|__/  |__/ \\____  $$|__/|__/|__/\n");
+	printf("      \\__/                                               /$$  \\ $$            \n");
 	printf("                                                        |  $$$$$$/            \n");
-	printf("                                                         \______/             \n");
+	printf("                                                         \\______/             \n");
 	fflush(stdout);
 	return;
 }

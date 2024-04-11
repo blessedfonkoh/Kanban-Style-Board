@@ -19,7 +19,7 @@
 
 void editList(ListPtr *currentPtr);
 
-unsigned int editListMenu();
+int editListMenu();
 void editItem(ListPtr *currentPtr);
 void addItem(ListPtr *currentPtr);
 void deleteItem(ListPtr *currentPtr);

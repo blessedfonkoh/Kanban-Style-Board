@@ -14,9 +14,9 @@
 
 #define MAX_SIZE 80
 
-unsigned int editListMenu()
+int editListMenu()
 {
-	unsigned int userChoice;
+	int userChoice;
 	do
 	{
 		printf("Options:\n"
@@ -26,7 +26,7 @@ unsigned int editListMenu()
 			   "4. Return to main menu\n"
 			   "Enter your option:\n");
 		fflush(stdout);
-		scanf("%1u", &userChoice);
+		scanf("%1d", &userChoice);
 		while (getchar() != '\n')
 			; // clearing scanf input buffer
 
@@ -43,7 +43,7 @@ unsigned int editListMenu()
 }
 void editList(ListPtr *currentPtr) //   TO DO
 {
-	unsigned int userChoice;
+	int userChoice;
 	char name[MAX_SIZE];
 
 	do
@@ -53,13 +53,13 @@ void editList(ListPtr *currentPtr) //   TO DO
 		switch (userChoice)
 		{
 		case 1:									  // edit item in list
-			editItem(&currentPtr);
+			editItem(currentPtr);
 			break;
 		case 2:									  // add item to list
-			addItem(&currentPtr);
+			addItem(currentPtr);
 			break;		
 		case 3:									  // delete item from list
-			deleteItem(&currentPtr); // Pass a pointer to the list
+			deleteItem(currentPtr); // Pass a pointer to the list
 			break;
 		case 4: // return to main menu
 			returnToMenu();

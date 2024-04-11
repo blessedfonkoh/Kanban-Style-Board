@@ -58,6 +58,7 @@
   "C_Cpp_Runner.msvcSecureNoWarnings": false,
   "files.associations": {
     "structdata.h": "c",
-    "listeditfunctions.h": "c"
+    "listeditfunctions.h": "c",
+    "mainmenu.h": "c"
   }
 }

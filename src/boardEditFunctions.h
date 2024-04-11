@@ -8,7 +8,7 @@
 #ifndef BOARDEDITFUNCTIONS_H_
 #define BOARDEDITFUNCTIONS_H_
 
-unsigned int editBoardMenu();
+int editBoardMenu();
 void editBoard(ListPtr *currentPtr);
 void editListName(ListPtr *currentPtr);
 void addList(ListPtr *currentPtr);

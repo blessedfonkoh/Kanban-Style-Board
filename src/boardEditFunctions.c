@@ -13,9 +13,9 @@
 #include "structData.h"
 #include "mainMenu.h"
 
-unsigned int editBoardMenu()
+int editBoardMenu()
 {
-    unsigned int userChoice;
+    int userChoice;
     do
     {
         printf("Options:\n"
@@ -25,7 +25,7 @@ unsigned int editBoardMenu()
                "4. Return to main menu\n"
                "Enter your option:\n");
         fflush(stdout);
-        scanf("%1u", &userChoice);
+        scanf("%1d", &userChoice);
         while (getchar() != '\n')
             ; // clearing scanf input buffer
 
@@ -43,7 +43,7 @@ unsigned int editBoardMenu()
 
 void editBoard(ListPtr *currentPtr)
 {
-    unsigned int choice;
+    int choice;
     char name[MAX_SIZE];
     bool found = false; // boolean for finding the list
     if (*currentPtr == NULL)
@@ -61,16 +61,8 @@ void editBoard(ListPtr *currentPtr)
         {
         case 1:
 
-            if (choice == 1)
-            {
                 printf("Enter the name of the list to edit:\n");
                 fflush(stdout);
-            }
-            else
-            {
-                printf("Enter the name of the list to delete:\n");
-                fflush(stdout);
-            }
 
             fgets(name, MAX_SIZE, stdin);
 
