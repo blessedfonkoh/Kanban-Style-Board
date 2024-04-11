@@ -105,7 +105,10 @@ void displayBoard(char fileName[80], ListPtr *currentPtr) // done
 			if ((info[strlen(info) - 1]) == ':')
 			{ // its a list
 				List *newList = malloc(sizeof(List));
-				// may need error hadnling if allocation fails
+				if(newList == NULL){
+					printf("error memory didnt allocate.")
+					return;
+				}
 				strcpy(newList->listName, info);
 				newList->nextList = firstList;
 				newList->firstItem = NULL;
@@ -118,7 +121,10 @@ void displayBoard(char fileName[80], ListPtr *currentPtr) // done
 			  // Allocate memory for a new item
 
 				Item *newItem = malloc(sizeof(Item));
-				// may need error handling if this fails
+				if(newItem == NULL){
+					printf("error memory didnt allocate.")
+					return;					
+				}
 				strcpy(newItem->itemName, info);
 				newItem->nextItem = NULL;
 				// Find the last item in the current list and link the new item
@@ -193,6 +199,10 @@ void load(char fileName[MAX_SIZE], ListPtr *currentPtr) // done
 			if ((info[strlen(info) - 1]) == ':')
 			{ // its a list
 				List *newList = malloc(sizeof(List));
+				if(newList == NULL){
+					printf("error memory didnt allocate.")
+					return;					
+				}
 				// may need error hadnling if allocation fails
 				strcpy(newList->listName, info);
 				newList->nextList = firstList;
@@ -206,6 +216,10 @@ void load(char fileName[MAX_SIZE], ListPtr *currentPtr) // done
 			  // Allocate memory for a new item
 
 				Item *newItem = malloc(sizeof(Item));
+				if(newItem == NULL){
+					printf("error memory didnt allocate.")
+					return;					
+				}				
 				// may need error handling if this fails
 				strcpy(newItem->itemName, info);
 				newItem->nextItem = NULL;
