@@ -106,7 +106,7 @@ void displayBoard(char fileName[80], ListPtr *currentPtr) // done
 			{ // its a list
 				List *newList = malloc(sizeof(List));
 				if(newList == NULL){
-					printf("error memory didnt allocate.")
+					printf("error memory didnt allocate.");
 					return;
 				}
 				strcpy(newList->listName, info);
@@ -122,7 +122,7 @@ void displayBoard(char fileName[80], ListPtr *currentPtr) // done
 
 				Item *newItem = malloc(sizeof(Item));
 				if(newItem == NULL){
-					printf("error memory didnt allocate.")
+					printf("error memory didnt allocate.");
 					return;					
 				}
 				strcpy(newItem->itemName, info);
@@ -200,7 +200,7 @@ void load(char fileName[MAX_SIZE], ListPtr *currentPtr) // done
 			{ // its a list
 				List *newList = malloc(sizeof(List));
 				if(newList == NULL){
-					printf("error memory didnt allocate.")
+					printf("error memory didnt allocate.");
 					return;					
 				}
 				// may need error hadnling if allocation fails
@@ -217,7 +217,7 @@ void load(char fileName[MAX_SIZE], ListPtr *currentPtr) // done
 
 				Item *newItem = malloc(sizeof(Item));
 				if(newItem == NULL){
-					printf("error memory didnt allocate.")
+					printf("error memory didnt allocate.");
 					return;					
 				}				
 				// may need error handling if this fails
