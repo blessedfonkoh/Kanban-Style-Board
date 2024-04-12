@@ -129,6 +129,7 @@ int main()
 			{
 				save(currentPtr, fPtr);
 				fclose(fPtr);
+				printf("File saved succesfully!\n");
 			}
 			break;
 		case 6:
