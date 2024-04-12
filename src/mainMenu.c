@@ -257,7 +257,6 @@ void load(char fileName[MAX_SIZE], ListPtr *currentPtr) // done
 void save(ListPtr currentPtr, FILE *fPtr)
 {
 	// Check if the list is empty for base case
-	// Check if the list is empty for base case
 	if (currentPtr == NULL)
 	{
 		return;

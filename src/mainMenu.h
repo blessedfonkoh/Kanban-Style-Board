@@ -2,7 +2,6 @@
  * loadFromFile.h
  *
  *  Created on: 5 Apr 2024
- *      Author: bless
  */
 #include <stdio.h>
 #include <stdlib.h>

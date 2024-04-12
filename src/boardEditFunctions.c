@@ -61,8 +61,8 @@ void editBoard(ListPtr *currentPtr)
         {
         case 1:
 
-                printf("Enter the name of the list to edit:\n");
-                fflush(stdout);
+            printf("Enter the name of the list to edit:\n");
+            fflush(stdout);
 
             fgets(name, MAX_SIZE, stdin);
 
